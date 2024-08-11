@@ -184,22 +184,22 @@ aws iam delete-user --user-name aws-cli-user
 
 ### Step 2 - S3
 
-- check the existing S3 buckets and create a new bucket named "osvaldo-cli-bucket"
+- check the existing S3 buckets and create a new bucket named "emre-cli-bucket"
 ```
 aws s3 ls
-aws s3 mb s3://osvaldo-cli-bucket-osvaldo
+aws s3 mb s3://emre-cli-bucket-emre
 ```
 
 - create a file in the existing directory and copy this file to newly created bucket 
 ```
 touch in-class.yaml
-aws s3 cp in-class.yaml s3://osvaldo-cli-bucket-osvaldo
+aws s3 cp in-class.yaml s3://emre-cli-bucket-emre
 ```
 
 - copy this file to new folder inside bucket 
 ```
-aws s3 cp in-class.yaml s3://osvaldo-cli-bucket-osvaldo/new/in-class.yaml
-aws s3 ls s3://osvaldo-cli-bucket-osvaldo/new/
+aws s3 cp in-class.yaml s3://emre-cli-bucket-emre/new/in-class.yaml
+aws s3 ls s3://emre-cli-bucket-emre/new/
 ```
 
 - show the example of the user data that we used in IAM session while covering ROLES. Since we don't have any AWS CLI configuration while launching an EC2, the CLI command inside the EC2 fetch the data via ROLES rather than CLI credentials. 
@@ -209,25 +209,25 @@ aws s3 ls s3://osvaldo-cli-bucket-osvaldo/new/
 yum update -y
 yum install -y httpd
 cd /var/www/html
-aws s3 cp s3://osvaldo-pipeline-production/index.html .
-aws s3 cp s3://osvaldo-pipeline-production/cat.jpg .
+aws s3 cp s3://emre-pipeline-production/index.html .
+aws s3 cp s3://emre-pipeline-production/cat.jpg .
 systemctl enable httpd
 systemctl start httpd 
 ```
 
 - Check inside of the newly created bucket.
 ```
-aws s3 ls s3://osvaldo-cli-bucket-osvaldo
+aws s3 ls s3://emre-cli-bucket-emre
 ```
 
 - delete the object inside the bucket 
 ```
-aws s3 rm s3://osvaldo-cli-bucket-osvaldo/new/in-class.yaml
+aws s3 rm s3://emre-cli-bucket-emre/new/in-class.yaml
 ```
 
 - remove the bucket
 ```
-aws s3 rb s3://osvaldo-cli-bucket-osvaldo --force
+aws s3 rb s3://emre-cli-bucket-emre --force
 ```
 
 
