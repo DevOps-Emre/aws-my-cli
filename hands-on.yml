@@ -1,0 +1,13 @@
+Command structure:
+aws <command> <subcommand> [options and parameters]
+aws s3 ls
+aws <command> wait <subcommand> [options and parameters]
+aws cloudformation wait change-set-create-complete --stack-name my-stack --change-set-name my-change-set
+
+aws cli configuration:
+aws configure list
+# check credantials
+
+aws s3 cp S3-bucket.yaml s3://bucketname # upload file on our existing bucket (aws s3 cp s3-bucket.yml s3://cf-templates-qi6lv2d9r6tp-us-east-1)
+
+uri: https://saqibullah.medium.com/using-cloudformation-aws-cli-setup-s3-bucket-8aaad818d300
