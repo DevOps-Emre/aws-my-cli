@@ -10,7 +10,7 @@
 
 ## Learning Outcomes
 
-At the end of the this hands-on training, students will be able to;
+At the end of the this hands-on training, attendees will be able to;
 
 - installing CLI on Windows, Linux or MAC O/S
 
