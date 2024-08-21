@@ -293,12 +293,12 @@ aws ec2 describe-instances  \
   --filters "Name = instance-type, Values = t2.micro" "Name = key-name, Values = KEY_NAME_HERE" \
   --query "Reservations[].Instances[].{Instance:InstanceId,PublicIp:PublicIpAddress}" 
 ```
+```
 !!!! #put your keypair name with MyKeyPair.pem and show on cli
 
 aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
 
 aws ec2 delete-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
-
 ```
 - Let's stop and terminate the instance
 ```
