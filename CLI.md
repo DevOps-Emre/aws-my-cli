@@ -294,7 +294,7 @@ aws ec2 describe-instances  \
   --query "Reservations[].Instances[].{Instance:InstanceId,PublicIp:PublicIpAddress}" 
 ```
 ```
-!!!! #put your keypair name with MyKeyPair.pem and show on cli
+!!!! #put your keypair name with MyKeyPair.pem and show on cli. remainder for connecting ec2 chmod 400 MyKeyPair.pem
 
 aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
 
