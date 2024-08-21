@@ -300,6 +300,15 @@ aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text
 
 aws ec2 delete-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
 ```
+```
+Security Group Creation/Deletion
+
+aws ec2 create-security-group --group-name my-sg --description "My security group" --vpc-id vpc-1a2b3c4d
+
+aws ec2 describe-security-groups --group-ids $(aws ec2 describe-instances --instance-id $id --query "Reservations[].Instances[].SecurityGroups[].GroupId[]" --output text) --output text
+
+aws ec2 delete-security-group --group-id sg-903004f8 (sg id??)
+```
 - Let's stop and terminate the instance
 ```
 aws ec2 stop-instances --instance-ids INSTANCE_ID_HERE 
