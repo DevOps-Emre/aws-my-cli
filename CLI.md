@@ -172,10 +172,42 @@ aws s3 cp help
 ```
 aws iam list-users
 
-aws iam list-users --output table 
+aws iam list-users --output table
+aws iam list-users --output text # list all user's usernames
+# list current user's info
+aws iam get-user
+
+# list current user's access keys
+aws iam list-access-keys 
 
 
-aws iam create-user --user-name aws-cli-user
+aws iam create-user --user-name aws-cli-user # crate new user
+
+# create multiple new users, from a file
+allUsers=$(cat ./user-names.txt)
+for userName in $allUsers; do
+    aws iam create-user \
+        --user-name $userName
+done
+
+# list all users
+aws iam list-users --no-paginate
+
+# get a specific user's info
+aws iam get-user \
+    --user-name aws-admin2
+
+# delete one user
+aws iam delete-user \
+    --user-name aws-admin2
+
+# delete all users
+# allUsers=$(aws iam list-users --output text | cut -f 6);
+allUsers=$(cat ./user-names.txt)
+for userName in $allUsers; do
+    aws iam delete-user \
+        --user-name $userName
+done
 
 aws iam list-users | grep aws-cli-user
 
