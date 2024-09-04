@@ -1,6 +1,6 @@
 ## AWS CLI Session 1 : 
 
-- This hands on explains how to install and configure AWS CLI. We'll also see how to create and manipulate the resources in AWS via AWS CLI 
+- This hands on explains how to install and configure AWS CLI. We'll also see how to create and manipulate the resources in AWS via AWS CLI.
 
 ### References
 - https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-welcome.html
