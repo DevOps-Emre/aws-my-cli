@@ -366,3 +366,8 @@ aws ec2 run-instances \
    --count 1 \
    --instance-type t2.micro
 ```
+
+
+AWS LAMBDA
+MONITOR
+Database
