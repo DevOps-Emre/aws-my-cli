@@ -210,6 +210,7 @@ for userName in $allUsers; do
 done
 
 aws iam list-users | grep aws-cli-user
+aws iam list-policies
 ```
 
 
