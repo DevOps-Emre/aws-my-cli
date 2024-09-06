@@ -184,7 +184,7 @@ aws iam list-access-keys
 aws iam create-user --user-name aws-cli-user # crate new user
 
 # create multiple new users, from a file
-allUsers=$(cat ./user-names.txt)
+allUsers=$(cat ./user-name.txt)
 for userName in $allUsers; do
     aws iam create-user \
         --user-name $userName
