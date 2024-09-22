@@ -283,6 +283,7 @@ aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text
 
 aws ec2 delete-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
 ```
+Here is a way to list all your instances across all regions with the AWS CLI:
 ```
 In CLI
 
