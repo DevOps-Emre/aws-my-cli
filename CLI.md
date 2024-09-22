@@ -203,7 +203,7 @@ aws iam delete-user \
 
 # delete all users
 # allUsers=$(aws iam list-users --output text | cut -f 6);
-allUsers=$(cat ./user-names.txt)
+allUsers=$(cat ./user-name.txt)
 for userName in $allUsers; do
     aws iam delete-user \
         --user-name $userName
