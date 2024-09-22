@@ -284,6 +284,23 @@ aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text
 aws ec2 delete-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
 ```
 ```
+In CLI
+
+Add this for example to .bashrc. Reload it source ~/.bashrc, and run it
+
+Note: Except for aws CLI you need to have jq installed
+
+function aws.print-all-instances() {
+  REGIONS=`aws ec2 describe-regions --region us-east-1 --output text --query Regions[*].[RegionName]`
+  for REGION in $REGIONS
+  do
+    echo -e "\nInstances in '$REGION'..";
+    aws ec2 describe-instances --region $REGION | \
+      jq '.Reservations[].Instances[] | "EC2: \(.InstanceId): \(.State.Name)"'
+  done
+}
+```
+```
 Security Group Creation/Deletion
 
 aws ec2 create-security-group --group-name my-sg --description "My security group" --vpc-id vpc-1a2b3c4d
