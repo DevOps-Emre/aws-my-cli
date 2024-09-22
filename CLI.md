@@ -364,7 +364,36 @@ aws s3 rm s3://emre-cli-bucket-emre/new/in-class.yaml
 ```
 aws s3 rb s3://emre-cli-bucket-emre --force
 ```
-## Part-4  Working with the latest Amazon Linux 2023 AMI
+## Part-4  VPC
+Create Security Group
+```
+aws ec2 create-security-group \
+    --group-name roman_numbers_sec_grp \
+    --description "This Sec Group is to allow ssh and http from anywhere"
+```
+Check Security Group
+```
+aws ec2 describe-security-groups --group-names roman_numbers_sec_grp
+```
+Create rules od Security Group
+```
+aws ec2 authorize-security-group-ingress \
+    --group-name roman_numbers_sec_grp \
+    --protocol tcp \
+    --port 22 \
+    --cidr 0.0.0.0/0
+
+aws ec2 authorize-security-group-ingress \
+    --group-name roman_numbers_sec_grp \
+    --protocol tcp \
+    --port 80 \
+    --cidr 0.0.0.0/0
+```
+To delete Security Group
+```
+aws ec2 delete-security-group --group-name roman_numbers_sec_grp
+```
+## Part-5  Working with the latest Amazon Linux 2023 AMI
 
 - Call the latest version of AL2023
 ```
@@ -386,6 +415,3 @@ aws ec2 run-instances \
 ```
 
 
-AWS LAMBDA
-MONITOR
-Database
