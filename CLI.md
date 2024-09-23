@@ -229,6 +229,14 @@ aws ec2 describe-instances
 ```
 aws ec2 describe-instances --region us-east-2 --output table 
 ```
+we can list key pairs
+```
+aws ec2 describe-key-pairs --key-name id_rsa --region eu-central-1
+```
+we can set the default region in your AWS CLI configuration
+```
+aws configure
+```
 
 -  Launch an EC2 instance (Note that this command may not work in PowerShell because of the different meaning of "\" )
 ```
