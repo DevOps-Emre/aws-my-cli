@@ -401,6 +401,18 @@ To delete Security Group
 ```
 aws ec2 delete-security-group --group-name roman_numbers_sec_grp
 ```
+To list NAT Gateways in a specific VPC:
+```
+aws ec2 describe-nat-gateways --profile alice-poc
+```
+To list route tables in a specific VPC:
+```
+aws ec2 describe-route-tables --filters "Name=vpc-id,Values=<vpc-id>"
+```
+To list network ACLs in a specific VPC:
+```
+aws ec2 describe-network-acls --filters "Name=vpc-id,Values=<vpc-id>"
+```
 ## Part-5  Working with the latest Amazon Linux 2023 AMI
 
 - Call the latest version of AL2023
