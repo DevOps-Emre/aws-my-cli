@@ -433,5 +433,87 @@ aws ec2 run-instances \
    --count 1 \
    --instance-type t2.micro
 ```
+## Part-6 RDS 
+IAM Permission
+If you want to manage the RDS resources using AWS CLI, first check that the IAM user or role has the following permissions:
 
+rds:CreateDBInstance
+rds:ModifyDBInstance
+rds:DeleteDBInstance
+rds:CreateDBSnapshot
+rds:RestoreDBInstanceFromDBSnapshot
+```
+aws iam create-policy \
+    --policy-name RDSManagementPolicy \
+    --policy-document '{
+        "Version": "2023-05-25",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "rds:CreateDBInstance",
+                    "rds:ModifyDBInstance",
+                    "rds:DeleteDBInstance",
+                    "rds:CreateDBSnapshot",
+                    "rds:RestoreDBInstanceFromDBSnapshot",
+                    "rds:DescribeDBInstances",
+                    "rds:RebootDBInstance"
+                ],
+                "Resource": "*"
+            }
+        ]
+    }'
+```
+Attach the policy to your IAM user or role:
+```
+aws iam attach-user-policy     
+--policy-arn arn:aws:iam::aws:policy/RDSManagementPolicy     
+--user-name your-iam-username
+```
+To create a new DB instance, use the following command:
+```
+aws rds create-db-instance     
+        --db-instance-identifier mydbinstance     
+        --db-instance-class db.t2.micro     
+        --engine mysql     
+        --allocated-storage 20     
+        --master-username admin     
+        --master-user-password mypassword
+```
+![image](https://github.com/user-attachments/assets/8e717190-a016-45be-8eec-3b35cba9f1f6)
+![image](https://github.com/user-attachments/assets/51c00432-60d6-4856-8c49-028d7e03e8b9)
+
+To modify an existing DB instance, such as changing the allocated storage, use the following command:
+```
+aws rds modify-db-instance     
+        --db-instance-identifier mydbinstance     
+        --allocated-storage 30     
+        --apply-immediately
+```
+![image](https://github.com/user-attachments/assets/3e1f06d0-2d90-4e4d-9874-a5fa365bb518)
+![image](https://github.com/user-attachments/assets/9de6d036-b751-41c6-9556-9f8904974db2)
+
+To create a snapshot of your DB instance, use the following command:
+```
+aws rds create-db-snapshot 
+    --db-instance-identifier mydbinstance 
+    --db-snapshot-identifier mydbsnapshot
+```
+We can restore DB instance from a snapshot, use the following command
+```
+aws rds restore-db-instance-from-db-snapshot 
+    --db-instance-identifier mynewdbinstance 
+    --db-snapshot-identifier mydbsnapshot
+```
+To delete a DB instance, use the following command:
+```
+aws rds delete-db-instance 
+    --db-instance-identifier mydbinstance 
+    --skip-final-snapshot
+```
+![image](https://github.com/user-attachments/assets/c18c5165-02e3-4a71-9333-c4515e4f3377)
+![image](https://github.com/user-attachments/assets/7a042b18-cfa9-41d1-955f-0f0d5f91c864)
+
+**Use Amazon DynamoDB with the AWS CLI
+https://docs.aws.amazon.com/cli/v1/userguide/cli-services-dynamodb.html
 
