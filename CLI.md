@@ -433,7 +433,7 @@ aws ec2 run-instances \
    --count 1 \
    --instance-type t2.micro
 ```
-## Part-6 RDS 
+## Part-6 AWS RDS and AWS DynamoDB
 IAM Permission
 If you want to manage the RDS resources using AWS CLI, first check that the IAM user or role has the following permissions:
 
